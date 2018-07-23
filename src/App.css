@@ -1,0 +1,156 @@
+@font-face {
+  font-family: GothamPro;
+  src: url(fonts/GothamPro.ttf);
+}
+@font-face {
+  font-family: BebasNeueRegular;
+  src: url(fonts/BebasNeueRegular.otf);
+}
+
+body {
+  font-family: 'GothamPro', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.app-container>div>div>div {
+  display: flex;
+  align-items: center;
+  padding: 0 50px;
+  width: 95vw !important;
+}
+
+.app-container>div>div>div:nth-child(n) {
+  background-color: #67cae8;
+}
+
+.app-container>div>div>div:nth-child(2n) {
+  background-color: #ffffff;
+}
+
+.app-container>div>div>div>div {
+  padding: 15px;
+}
+
+/* NAVBAR */
+
+.navbar {
+  position: absolute;
+  width: 60%;
+  z-index: 5;
+  transform: rotate(-90deg) translateX(-100%);
+  transform-origin: left top;
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 2em;
+  padding: 10px 0;
+  background-color: #67cae8;
+}
+
+.current-nav {
+  color: white !important;
+}
+
+.navbar a {
+  color: #f7ff80;
+}
+
+/* HEADER */
+
+.logo {
+  font-size: 12em;
+  text-transform: uppercase;
+  color: #f7ff80;
+  width: 100%;
+}
+
+.logo span:nth-child(1) {
+  position: absolute;
+  top: 25%;
+  left: 10%;
+}
+
+.logo span:nth-child(2) {
+  position: absolute;
+  top: 45%;
+  left: 30%;
+}
+
+.logo span:nth-child(3) {
+  position: absolute;
+  top: 65%;
+  left: 50%;
+}
+
+/* SECTIONS */
+
+.title {
+  width: 50%;
+  font-size: 10em;
+  color: #b3b3b3;
+}
+
+.description {
+  width: 50%;
+  font-size: 2em;
+  line-height: 1.25;
+  color: #67cae8;
+}
+
+.app-container>div>div>div:nth-child(odd) .description {
+  color: #ffffff;
+}
+
+.app-container>div>div>div:nth-child(odd) .title {
+  color: #f7ff80;
+}
+
+.right-title {
+  order: 2;
+  text-align: right;
+}
+
+/* CLIENTS SECTION */
+.title span {
+  font-size: 0.2em;
+  display: block;
+  padding-left: 20%;
+  color: #67cae8;
+}
+
+.clients-container {
+  display: flex;
+  background-color: #67cae8;
+  padding: 100px;
+  flex-wrap: wrap;
+  margin-right: -65px;
+}
+
+.client-logo {
+  margin: 60px;
+}
+
+/* POWER SECTION */
+
+.servises {
+  display: flex;
+  margin: 40px 0;
+}
+
+.offer h3 {
+  font-size: 1em;
+  margin-bottom: 35px;
+  text-align: center;
+}
+
+.offer ul {
+  font-size: 0.7em;
+  line-height: 1.7;
+  padding-left: 40px;
+}
+
+.offer {
+  padding: 0 15px;
+}

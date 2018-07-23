@@ -1,0 +1,158 @@
+mainColor = #67CAE8
+acsentColor = #F7FF80
+
+// FONTS
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway');
+// font-family: 'Raleway', sans-serif;
+// font-family: 'Open Sans', sans-serif;
+
+body
+    font-family: 'Raleway', sans-serif
+h1  
+    font-size 96px
+    font-weight 900
+    margin: 30px 0
+    text-transform uppercase
+h2 
+    font-size 72px
+p 
+    color: mainColor
+    font-size 24px
+    line-height 28px
+    font-weight 400
+    &.lead
+        font-size 36px
+        line-height 42px
+        font-weight bold
+        margin: 20px 0
+    & span 
+        text-transform uppercase
+        font-size 38px
+        font-weight bold
+        line-height 56px
+a, li
+    color: mainColor
+    font-size 24px
+    line-height 28px
+    font-weight 300 
+    text-decoration: none  
+a:hover
+    color: acsentColor !important
+    text-shadow: mainColor -2px -2px
+
+// SECTIONS
+.one-page-scroll>div>div>div>div
+    align-items center
+    color: mainColor
+    height 100vh
+    background-repeat no-repeat
+
+// section indicators
+.one-page-scroll>div>ul
+    display: none
+
+
+// NAVBAR
+.navbar
+    position: fixed;
+    bottom: 1em;
+    right: 0;
+.navbar a
+    color: white
+    text-shadow: #67CAE8 -2px -2px;
+
+
+// PORTFOLIO PAGE
+.categoryLetter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 5;
+    color: white;
+    font-size: 500px;
+    transform: translate(-50%, -50%);
+    text-shadow: #67CAE8 -30px -35px;
+    user-select none
+}
+
+.controls {
+    z-index: 5;
+    position: absolute;
+    bottom: 5em;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.control-button
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size 10em
+    cursor pointer
+    &:nth-child(n)
+        color: mainColor
+    &:nth-child(2)
+        color: white
+
+// FEATURES
+
+.bot-hint
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%)
+    & p  
+        text-align center
+
+.mainbg 
+    background-color: mainColor
+
+// boxes
+.contacts-box, .clients-box
+    background-color: mainColor
+    padding-top: 150px
+    padding-bottom 150px
+    & p
+        color: white
+
+.clients-box div[class^="col-"]
+    display flex
+    justify-content: center
+    margin-top: 50px
+    margin-bottom 50px
+
+// FORM
+form input {
+  font-family: OpenSans;
+  font-size: 18px;
+  line-height: 25px;
+  width: 100%;
+  padding-top: 20px;
+  color: #9b9b9b;
+  border: none;
+  border-bottom: 1px solid #9b9b9b;
+  background-color: transparent;
+  margin: 10px 0;
+}
+form input:focus,
+form button:focus {
+  outline: none;
+}
+form input:focus::placeholder {
+  color: transparent;
+}
+form button {
+  font-family: OpenSans;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 25px;
+  color: mainColor
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #fb0;
+  padding: 10px 0;
+  text-transform: uppercase;
+  margin-top: 50px;
+  cursor: pointer;
+}
