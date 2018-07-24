@@ -60,7 +60,7 @@ export default class PortfolioPage extends Component {
     render() {
         return (
             <div className="row page-container">
-                <div className="mainbg" style={{ position: 'absolute', fontSize: '18px', padding: '5px 10px', top: '3em', left: '5em', color: 'white' }}>Над чем работаем</div>
+                <div className="d-none d-md-block mainbg" style={{ position: 'absolute', fontSize: '18px', padding: '5px 10px', top: '3em', left: '5em', color: 'white' }}>Над чем работаем</div>
                 <div className="offset-lg-1 col-lg-5">
                     <p className="lead">{this.state.title}</p>
                     <ul>
@@ -68,7 +68,7 @@ export default class PortfolioPage extends Component {
                     </ul>
                 </div>
                 <div className="categoryLetter">{this.state.title[0]}</div>
-                <div className="col-lg-6 mainbg">
+                <div className="d-none d-lg-block col-lg-6 mainbg">
                     <div className="parallaxbg" style={{
                         height: '100vh',
                         backgroundImage: `url(${this.state.image})`,
@@ -77,21 +77,17 @@ export default class PortfolioPage extends Component {
                         backgroundPosition: 'left'
                     }}></div>
                 </div>
-                <div style={{
-                    position: 'absolute', fontSize: '18px', bottom: '7em',
-                    left: '5em', textTransform: 'uppercase', paddingBottom: '10px',
-                    fontWeight: '100', borderBottom: '1px solid #67CAE8'
-                }}><Link to="/Portfolio">
+                <div className="portfolioLink"><Link to="/Portfolio">
                     Портфолио
                 </Link></div>
                 <div className="controls">
                     <div className="row">
-                        <button className="control-button" onClick={this.handlePreviousPortfolioClick}>←</button>
-                        <button className="control-button" onClick={this.handleNextPortfolioClick}>→</button>
+                        <button className="col-6 control-button" onClick={this.handlePreviousPortfolioClick}>←</button>
+                        <button className="col-6 control-button" onClick={this.handleNextPortfolioClick}>→</button>
                     </div>
                     <div className="row">
-                        <div style={{ textAlign: 'right' }} className="col-lg-6">{this.state.categories[(3 + this.state.currentCategoryIndex - 1) % 3]}</div>
-                        <div style={{ color: 'white' }} className="col-lg-6">{this.state.categories[(this.state.currentCategoryIndex + 1) % 3]}</div>
+                        <div style={{ textAlign: 'right' }} className="control-label col-6">{this.state.categories[(3 + this.state.currentCategoryIndex - 1) % 3]}</div>
+                        <div className="control-label col-6">{this.state.categories[(this.state.currentCategoryIndex + 1) % 3]}</div>
                     </div>
                 </div>
             </div>

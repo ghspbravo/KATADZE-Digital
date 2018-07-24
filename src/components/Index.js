@@ -12,9 +12,12 @@ import PortfolioPage from './PortfolioPage'
 
 export default class Index extends Component {
     componentDidMount() {
+
+        document.querySelectorAll('.one-page-scroll>div>div>div').forEach(section => section.classList.add('scroll-section'))
+
         document.body.style.overflow = 'hidden'
 
-        document.querySelectorAll(".page-container").forEach(container => container.onmouseover = e => {
+        document.querySelectorAll(".page-container").forEach(container => container.onmousemove = e => {
             document.querySelectorAll(".parallaxbg").forEach(element => parallaxIt(e, element))
         });
 

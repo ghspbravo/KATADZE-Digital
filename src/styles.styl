@@ -9,31 +9,34 @@ acsentColor = #F7FF80
 
 body
     font-family: 'Raleway', sans-serif
+.row 
+    margin: 0 !important
 h1  
-    font-size 96px
+    font-size 6rem
+    line-height 1
     font-weight 900
     margin: 30px 0
     text-transform uppercase
 h2 
-    font-size 72px
+    font-size 4.5rem
 p 
     color: mainColor
-    font-size 24px
+    font-size 1.5rem
     line-height 28px
     font-weight 400
     &.lead
-        font-size 36px
+        font-size 2.250rem
         line-height 42px
         font-weight bold
         margin: 20px 0
     & span 
         text-transform uppercase
-        font-size 38px
+        font-size 2.375rem
         font-weight bold
         line-height 56px
 a, li
     color: mainColor
-    font-size 24px
+    font-size 1.5rem
     line-height 28px
     font-weight 300 
     text-decoration: none  
@@ -52,15 +55,77 @@ a:hover
 .one-page-scroll>div>ul
     display: none
 
+// LOGO PAGE
+
+.studio-name
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    text-transform: uppercase;
+    padding: 0 10px;
+    width: 100%;
+    text-align: center;
+    top: 30px;
+    font-size: 2.5em;
+    z-index: 10
+@media (max-width: 530px) {
+    .studio-name {
+        width: 60%;
+    }
+}
+
+// BURGER
+
+button.burger,
+button.mobileBurger
+    position fixed
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent
+    & svg 
+        position fixed
+button.burger
+    opacity 0
+.mobileBurger
+    right 4rem
+    z-index: 10
+    & svg
+        &:nth-child(1)
+            top: 2rem
+        &:nth-child(2)
+            top: 2.6rem
+        &:nth-child(3)
+            top: 3.2rem
+
 
 // NAVBAR
 .navbar
+    user-select none
     position: fixed;
-    bottom: 1em;
-    right: 0;
+    bottom: 4em;
+    right: 4em;
 .navbar a
-    color: white
-    text-shadow: #67CAE8 -2px -2px;
+    color: black
+    text-shadow: mainColor -2px -2px;
+    z-index: 10
+
+.mobileNavContainer
+    display: none
+    position: fixed;
+    top: 0;
+    left: 0;
+    height 0
+    width: 100%;
+    background-color: acsentColor;
+    z-index: 5;
+    & a  
+        opacity 0
+    & div[class="col-12"]
+        margin: 10px;
+        text-align: center;
 
 
 // PORTFOLIO PAGE
@@ -90,10 +155,22 @@ a:hover
     outline: none;
     font-size 10em
     cursor pointer
+.control-button,
+.control-label
     &:nth-child(n)
         color: mainColor
     &:nth-child(2)
         color: white
+    
+.portfolioLink
+    position: absolute
+    font-size: 18px
+    bottom: 7em
+    left: 5em
+    text-transform: uppercase
+    padding-bottom: 10px
+    font-weight: 100
+    border-bottom: 1px solid mainColor
 
 // FEATURES
 
@@ -102,11 +179,15 @@ a:hover
     bottom: 5%;
     left: 50%;
     transform: translate(-50%)
-    & p  
-        text-align center
+    text-align: center
 
 .mainbg 
     background-color: mainColor
+
+.elect
+    color: black
+    text-shadow: mainColor -0.4rem -0.5rem
+    user-select: none
 
 // boxes
 .contacts-box, .clients-box
@@ -156,3 +237,53 @@ form button {
   margin-top: 50px;
   cursor: pointer;
 }
+
+@media (max-width 1200px)
+    h1 
+        font-size 5rem
+    p  
+        font-size 1.3rem
+        & .lead
+            font-size 1.75rem
+            line-height 35px
+
+@media (max-width 992px)
+    .categoryLetter
+        left 80%
+    .control-button,
+    .control-label
+        &:nth-child(n)
+            color: mainColor
+        &:nth-child(2)
+            color: mainColor
+
+@media (max-width 768px)
+    .control-button
+        font-size 6rem
+    .portfolioLink
+        bottom: 10rem
+        left: 2rem
+    .categoryLetter
+        font-size 300px
+        left 55%
+        top: 25%
+
+@media (max-width 576px)
+    h1  
+        font-size 2.5rem
+    p  
+        & span  
+            font-size 1.375rem
+            line-height 1
+        &.lead
+            font-size 2rem
+            line-height 1
+    .categoryLetter
+        font-size 200px
+        top: 20%
+        text-shadow: mainColor -10px -15px
+    .control-button
+        font-size 4rem
+    .clients-box
+        padding-top 0
+        padding-bottom 0
