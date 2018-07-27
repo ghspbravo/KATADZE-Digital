@@ -4,6 +4,10 @@ acsentColor = #F7FF80
 // FONTS
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway');
+@font-face {
+    font-family: BebasNeueRegular;
+    src: url(./fonts/BebasNeueRegular.otf);
+}
 // font-family: 'Raleway', sans-serif;
 // font-family: 'Open Sans', sans-serif;
 
@@ -44,8 +48,22 @@ a:hover
     color: acsentColor !important
     text-shadow: mainColor -2px -2px
 
+#delimiter1,
+#delimiter2  
+    z-index 9
+    position absolute 
+    height 100%
+    width 100%
+    display none
+
+#delimiter1
+    background-color mainColor
+
+#delimiter2 
+    background-color acsentColor
+
 // SECTIONS
-.one-page-scroll>div>div>div>div
+.onescroll-section>div
     align-items center
     color: mainColor
     height 100vh
@@ -54,6 +72,9 @@ a:hover
 // section indicators
 .one-page-scroll>div>ul
     display: none
+
+.one-page-scroll
+    position relative
 
 // LOGO PAGE
 
@@ -69,7 +90,7 @@ a:hover
     text-align: center;
     top: 30px;
     font-size: 2.5em;
-    z-index: 10
+    z-index: 4
 @media (max-width: 530px) {
     .studio-name {
         width: 60%;
@@ -80,6 +101,7 @@ a:hover
 
 button.burger,
 button.mobileBurger
+    z-index 10
     position fixed
     border: none;
     outline: none;
@@ -91,7 +113,6 @@ button.burger
     opacity 0
 .mobileBurger
     right 4rem
-    z-index: 10
     & svg
         &:nth-child(1)
             top: 2rem
@@ -185,8 +206,9 @@ button.burger
     background-color: mainColor
 
 .elect
+    font-family: 'BebasNeueRegular', sans-serif
     color: black
-    text-shadow: mainColor -0.4rem -0.5rem
+    text-shadow: mainColor -0.3rem -0.4rem
     user-select: none
 
 // boxes

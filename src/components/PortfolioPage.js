@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import TimelineMax from 'gsap/TimelineMax'
+import { Back } from 'gsap/EasePack'
 
 import developImage from '../resourses/portfolio/develop.png'
 import designImage from '../resourses/portfolio/design.png'
@@ -14,7 +16,7 @@ export default class PortfolioPage extends Component {
             features: ['Веб-сайты', 'Приложения', 'Боты', 'Плагины'],
             image: developImage,
             currentCategoryIndex: 0,
-            categories: ['Разработка', 'Дизайн', 'Спецпроекты']
+            categories: ['Разработка', 'Дизайн', 'Спецпроекты'],
         }
     }
 
@@ -48,6 +50,13 @@ export default class PortfolioPage extends Component {
             default:
                 break;
         }
+        
+        let updateSection = new TimelineMax()
+
+        updateSection.add('start')
+            .from('.page-container p.lead', 0.5, { rotationX: '90' })
+            .staggerFrom('.page-container li', 0.5, { opacity: '0', cycle: { rotationX: [-90, 90], transformOrigin: ['50% top', '50% bottom'] } })
+            .from('.categoryLetter', 0.5, { fontSize: '0', ease: Back.easeOut.config(3), oncomplete: () => this.setState({drawComplete: true}) }, 'start+=0.2')
     }
 
     handleNextPortfolioClick = () => {
@@ -55,6 +64,23 @@ export default class PortfolioPage extends Component {
     }
     handlePreviousPortfolioClick = () => {
         this.handlePortfolioChange((3 + this.state.currentCategoryIndex - 1) % 3)
+    }
+
+    componentDidMount() {
+        let drawSection = new TimelineMax()
+
+        drawSection.delay(1)
+            .add('start')
+            .from('.page-container p.lead', 0.5, { rotationX: '90' })
+            .staggerFrom('.page-container li', 0.5, { opacity: '0', cycle: { rotationX: [-90, 90], transformOrigin: ['50% top', '50% bottom'] } })
+            .from('.portfolioLink', 0.5, { opacity: '0', y: '100px' }, 'start')
+            .from('.categoryLetter', 0.5, { fontSize: '0', ease: Back.easeOut.config(3) }, 'start+=0.2')
+            .add('controls')
+            .from('.control-button:nth-child(1)', 0.5, { opacity: '0', x: '200px' })
+            .from('.control-button:nth-child(2)', 0.5, { opacity: '0', x: '-200px' }, 'controls')
+            .from('.control-label:nth-child(1)', 0.5, { opacity: '0', x: '200px' }, 'controls')
+            .from('.control-label:nth-child(2)', 0.5, { opacity: '0', x: '200px' }, 'controls')
+
     }
 
     render() {

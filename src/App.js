@@ -21,8 +21,16 @@ class App extends Component {
 		super(props)
 
 		this.state = {
-			navLinksVisibility: 'visible'
+			currentSection: 0,
+			navLinksVisibility: 'visible',
 		}
+	}
+
+	handleSectionChange = currentSection => {
+		this.setState({ currentSection: currentSection })
+		this.state.currentSection === 0
+			? this.showMenu()
+			: true
 	}
 
 	hideMenu = () => {
@@ -33,7 +41,7 @@ class App extends Component {
 		let portfolioNav = document.getElementById('portfolio-nav').getBoundingClientRect()
 		let contactsNav = document.getElementById('contacts-nav').getBoundingClientRect()
 
-		hideMenuTimeLine.to('.navLinks', 0.3, { transform: 'rotateX(90deg)' })
+		hideMenuTimeLine.to('.navLinks', 0.3, { transform: 'rotateX(90deg)' }, '+=1')
 			.to('.burger', 0.2, { opacity: '1' }, '-=0.2')
 			.set('#burger-top', { top: `${mainNav.top + mainNav.height / 2}px`, left: `${mainNav.left + 15}px`, width: `${mainNav.width - 30}px`, height: '30px' })
 			.set('#burger-mid', { top: `${portfolioNav.top + portfolioNav.height / 2}px`, left: `${portfolioNav.left + 15}px`, width: `${portfolioNav.width - 30}px`, height: '30px' })
@@ -81,46 +89,46 @@ class App extends Component {
 	}
 
 	showMobileMenu = () => {
-		if (this.state.navLinksVisibility === 'hidden') {this.hideMobileMenu(); return}
-		
+		if (this.state.navLinksVisibility === 'hidden') { this.hideMobileMenu(); return }
+
 		let showMenuTimeLine = new TimelineMax()
-		
+
 		showMenuTimeLine.add('start')
-		.set('.mobileNavContainer', {display: 'block' })	
-		.to('#mobile-burger-top', 0.5, {transform: 'rotate(45deg)'})
-		.to('#mobile-burger-mid', 0.5, {transform: 'rotate(-45deg)', top: '2.02rem'}, 'start')
-		.to('#mobile-burger-bot', 0.5, {width: '0'}, 'start')
-		.to('.mobileNavContainer', 1, {height: '160px', ease: Bounce.easeOut}, 'start')
-		.to('.mobileNavContainer a:nth-child(1)', 0.2, {opacity: '1'}, 'start+=0.4')
-		.to('.mobileNavContainer a:nth-child(2)', 0.2, {opacity: '1'}, 'start+=0.5')
-		.to('.mobileNavContainer a:nth-child(3)', 0.2, {opacity: '1'}, 'start+=0.6')
-		
+			.set('.mobileNavContainer', { display: 'block' })
+			.to('#mobile-burger-top', 0.5, { transform: 'rotate(45deg)' })
+			.to('#mobile-burger-mid', 0.5, { transform: 'rotate(-45deg)', top: '2.02rem' }, 'start')
+			.to('#mobile-burger-bot', 0.5, { width: '0' }, 'start')
+			.to('.mobileNavContainer', 1, { height: '160px', ease: Bounce.easeOut }, 'start')
+			.to('.mobileNavContainer .col-12:nth-child(1) a', 0.2, { opacity: '1' }, 'start+=0.4')
+			.to('.mobileNavContainer .col-12:nth-child(2) a', 0.2, { opacity: '1' }, 'start+=0.5')
+			.to('.mobileNavContainer .col-12:nth-child(3) a', 0.2, { opacity: '1' }, 'start+=0.6')
+
 		this.setState({ navLinksVisibility: 'hidden' })
 	}
 
 	hideMobileMenu = () => {
-		
+
 		let hideMenuTimeLine = new TimelineMax()
-		
+
 		hideMenuTimeLine.add('start')
-		.to('#mobile-burger-top', 0.5, {transform: 'rotate(0deg)'})
-		.to('#mobile-burger-mid', 0.5, {transform: 'rotate(0deg)', top: '2.6rem'}, 'start')
-		.to('#mobile-burger-bot', 0.5, {width: '30px'}, 'start')
-		.to('.mobileNavContainer', 1, {height: '0'}, 'start')
-		.to('.mobileNavContainer a:nth-child(1)', 0.2, {opacity: '0'}, 'start')
-		.to('.mobileNavContainer a:nth-child(2)', 0.2, {opacity: '0'}, 'start+=0.1')
-		.to('.mobileNavContainer a:nth-child(3)', 0.2, {opacity: '0'}, 'start+=0.2')
-		.set('.mobileNavContainer', {display: 'none' })
-		
+			.to('#mobile-burger-top', 0.5, { transform: 'rotate(0deg)' })
+			.to('#mobile-burger-mid', 0.5, { transform: 'rotate(0deg)', top: '2.6rem' }, 'start')
+			.to('#mobile-burger-bot', 0.5, { width: '30px' }, 'start')
+			.to('.mobileNavContainer', 1, { height: '0' }, 'start')
+			.to('.mobileNavContainer a:nth-child(1)', 0.2, { opacity: '0' }, 'start')
+			.to('.mobileNavContainer a:nth-child(2)', 0.2, { opacity: '0' }, 'start+=0.1')
+			.to('.mobileNavContainer a:nth-child(3)', 0.2, { opacity: '0' }, 'start+=0.2')
+			.set('.mobileNavContainer', { display: 'none' })
+
 		this.setState({ navLinksVisibility: 'visible' })
 	}
 
 	componentDidMount() {
 
 		window.onwheel = () => {
-			if (this.state.navLinksVisibility === 'visible' && window.pageYOffset > 500
-				|| this.state.navLinksVisibility === 'visible' && document.querySelector('.scroll-section')
-				&& document.querySelector('.scroll-section').parentNode.style.transform !== 'translate3d(0px, 0%, 0px)') this.hideMenu()
+			if (this.state.navLinksVisibility === 'visible' && window.pageYOffset > 600
+				|| this.state.navLinksVisibility === 'visible' && this.state.currentSection !== 0
+				&& this.state.currentSection !== 6) this.hideMenu()
 		}
 
 		document.querySelectorAll('.mobileNavContainer a').forEach(link => link.onclick = this.hideMobileMenu)
@@ -130,7 +138,7 @@ class App extends Component {
 		return (
 			<Router>
 				<div className="app-container">
-					<Route exact path="/" component={Index} />
+					<Route exact path="/" render={() => <Index sectionChangeHadndler={this.handleSectionChange} />} />
 					<Route path="/contacts" component={Contacts} />
 					<Route path="/portfolio" component={Portfolio} />
 

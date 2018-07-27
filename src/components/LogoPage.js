@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { logoAnimation, logoAnimationClear } from '../logoAnimation'
+import { logoAnimation } from '../logoAnimation'
 
 import '../anim.css'
 

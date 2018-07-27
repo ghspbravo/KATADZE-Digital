@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import { ScrollSection, ScrollContainer } from 'react-onepage-scroll'
 import TweenMax from "gsap/TweenMax";
+import TimelineMax from 'gsap/TimelineMax'
+import { Expo } from 'gsap/EasePack'
 
 import LogoPage from './LogoPage'
 import InfoPage1 from './InfoPage1'
@@ -11,13 +12,93 @@ import ClientsPage from './ClientsPage'
 import PortfolioPage from './PortfolioPage'
 
 export default class Index extends Component {
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            currentSection: 0,
+            touching: false,
+            touchingY: 0,
+            scrolling: false
+        };
+    };
+
+    handleNextSection = () => {
+        if (this.state.scrolling || this.state.currentSection === 6) return
+        this.setState({ scrolling: true })
+        let nextSectionTimeLine = new TimelineMax()
+
+        nextSectionTimeLine.set('#delimiter1', { display: 'block', bottom: '-100%' })
+            .set('#delimiter2', { display: 'block', bottom: '-100%' })
+            .to('#delimiter1', 0.5, { bottom: '0%', ease: Expo.easeOut })
+            .to('#delimiter2', 0.5, { bottom: '0%', oncomplete: this.nextSection }, '-=0.3')
+            .set('#delimiter1', { display: 'none' })
+            .to('#delimiter2', 0.5, { bottom: '100%' })
+            .set('#delimiter2', { display: 'none', oncomplete: () => this.setState({ scrolling: false }) })
+    }
+
+    handlePreviousSection = () => {
+        if (this.state.scrolling || this.state.currentSection === 0) return
+        this.setState({ scrolling: true })
+        let previousSectionTimeLine = new TimelineMax()
+
+        previousSectionTimeLine.set('#delimiter1', { display: 'block', bottom: '100%' })
+            .set('#delimiter2', { display: 'block', bottom: '100%' })
+            .to('#delimiter1', 0.5, { bottom: '0%', ease: Expo.easeOut })
+            .to('#delimiter2', 0.5, { bottom: '0%', oncomplete: this.previousSection }, '-=0.3')
+            .set('#delimiter1', { display: 'none' })
+            .to('#delimiter2', 0.5, { bottom: '-100%' })
+            .set('#delimiter2', { display: 'none', oncomplete: () => this.setState({ scrolling: false }) })
+    }
+
+    renderCurrentComponent = index => {
+        switch (index) {
+            case 0: return <LogoPage />
+            case 1: return <InfoPage1 />
+            case 2: return <InfoPage2 />
+            case 3: return <InfoPage3 />
+            case 4: return <PortfolioPage />
+            case 5: return <ClientsPage />
+            case 6: return <InfoPage4 />
+
+            default:
+                break;
+        }
+    }
+
+    nextSection = () => {
+        this.setState({ currentSection: this.state.currentSection + 1 })
+        this.props.sectionChangeHadndler(this.state.currentSection)
+    }
+    previousSection = () => {
+        this.setState({ currentSection: this.state.currentSection - 1 })
+        this.props.sectionChangeHadndler(this.state.currentSection)
+    }
+
     componentDidMount() {
 
-        document.querySelectorAll('.one-page-scroll>div>div>div').forEach(section => section.classList.add('scroll-section'))
+        document.getElementsByClassName('one-page-scroll')[0].onwheel = e => {
+            e.wheelDeltaY < 0
+                ? this.handleNextSection()
+                : this.handlePreviousSection()
+        }
+        document.getElementsByClassName('one-page-scroll')[0].ontouchstart = e => {
+            this.state.touching
+                ? true
+                : this.setState({ touchingY: e.changedTouches[0].clientY, touching: true })
+
+        }
+        document.getElementsByClassName('one-page-scroll')[0].ontouchend = e => {
+            this.setState({ touching: false })
+            if (e.changedTouches[0].clientY === this.state.touchingY) return
+            e.changedTouches[0].clientY > this.state.touchingY
+                ? this.handlePreviousSection()
+                : this.handleNextSection()
+        }
 
         document.body.style.overflow = 'hidden'
 
-        document.querySelectorAll(".page-container").forEach(container => container.onmousemove = e => {
+        document.querySelectorAll(".onescroll-section").forEach(container => container.onmousemove = e => {
             document.querySelectorAll(".parallaxbg").forEach(element => parallaxIt(e, element))
         });
 
@@ -33,18 +114,18 @@ export default class Index extends Component {
         }
     }
 
+    componentWillUnmount() {
+        this.props.sectionChangeHadndler(0)
+    }
+
     render() {
         return (
             <div className='one-page-scroll'>
-                <ScrollContainer>
-                    <ScrollSection pageId={0}><LogoPage /></ScrollSection>
-                    <ScrollSection pageId={1}>{InfoPage1()}</ScrollSection>
-                    <ScrollSection pageId={2}>{InfoPage2()}</ScrollSection>
-                    <ScrollSection pageId={3}>{InfoPage3()}</ScrollSection>
-                    <ScrollSection pageId={4}><PortfolioPage /></ScrollSection>
-                    <ScrollSection pageId={5}>{ClientsPage()}</ScrollSection>
-                    <ScrollSection pageId={6}>{InfoPage4()}</ScrollSection>
-                </ScrollContainer>
+                <section className="onescroll-section">
+                    {this.renderCurrentComponent(this.state.currentSection)}
+                </section>
+                <div id="delimiter1"></div>
+                <div id="delimiter2"></div>
             </div>
         )
     }
