@@ -5,9 +5,11 @@
 }
 body {
   font-family: 'Raleway', sans-serif;
+  overflow-x: hidden;
 }
 .row {
-  margin: 0 !important;
+  margin-left: 0;
+  margin-right: 0;
 }
 h1 {
   font-size: 6rem;
@@ -19,11 +21,23 @@ h1 {
 h2 {
   font-size: 4.5rem;
 }
+h3 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  font-weight: 400;
+  line-height: 56px;
+  color: #67cae8;
+}
 p {
   color: #67cae8;
   font-size: 1.5rem;
   line-height: 28px;
   font-weight: 400;
+  margin: 10px 0;
+}
+p.small {
+  font-size: 1rem;
 }
 p.lead {
   font-size: 2.25rem;
@@ -49,6 +63,12 @@ a:hover {
   color: #f7ff80 !important;
   text-shadow: #67cae8 -2px -2px;
 }
+img {
+  width: 100%;
+}
+span {
+  color: #67cae8;
+}
 #delimiter1,
 #delimiter2 {
   z-index: 9;
@@ -68,9 +88,6 @@ a:hover {
   color: #67cae8;
   height: 100vh;
   background-repeat: no-repeat;
-}
-.one-page-scroll>div>ul {
-  display: none;
 }
 .one-page-scroll {
   position: relative;
@@ -102,6 +119,7 @@ button.mobileBurger {
   outline: none;
   cursor: pointer;
   background-color: transparent;
+  right: 4rem;
 }
 button.burger svg,
 button.mobileBurger svg {
@@ -203,27 +221,33 @@ button.burger {
 .mainbg {
   background-color: #67cae8;
 }
+.mainbg p,
+.mainbg h3,
+.mainbg h1,
+.mainbg h2 {
+  color: #fff;
+}
 .elect {
   font-family: 'BebasNeueRegular', sans-serif;
   color: #000;
   text-shadow: #67cae8 -0.3rem -0.4rem;
   user-select: none;
 }
-.contacts-box,
+.contacts-box {
+  position: relative;
+  background: linear-gradient(90deg, #fff 50%, #67cae8 50%);
+}
+.contacts-box>div {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
 .clients-box {
   background-color: #67cae8;
   padding-top: 150px;
   padding-bottom: 150px;
 }
-.contacts-box p,
 .clients-box p {
   color: #fff;
-}
-.clients-box div[class^="col-"] {
-  display: flex;
-  justify-content: center;
-  margin-top: 50px;
-  margin-bottom: 50px;
 }
 form input {
   font-family: OpenSans;
@@ -284,6 +308,9 @@ form button {
   }
 }
 @media (max-width: 768px) {
+  h3 {
+    font-size: 2rem;
+  }
   .control-button {
     font-size: 6rem;
   }
@@ -296,8 +323,20 @@ form button {
     left: 55%;
     top: 25%;
   }
+  .contacts-box>div {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+  .clients-box {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
 }
 @media (max-width: 576px) {
+  h3 {
+    font-size: 1.5rem;
+    line-height: 1.5;
+  }
   h1 {
     font-size: 2.5rem;
   }
@@ -317,8 +356,46 @@ form button {
   .control-button {
     font-size: 4rem;
   }
-  .clients-box {
-    padding-top: 0;
-    padding-bottom: 0;
+  .contacts-box {
+    background: #67cae8;
   }
+  .contacts-box h3,
+  .contacts-box p {
+    color: #fff !important;
+  }
+  .order-fix {
+    order: 2;
+  }
+  .contacts-box>div {
+    padding-top: 30px;
+    padding-bottom: 30px;
+  }
+}
+.justify-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+.align-center {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.m-bot-m {
+  margin-bottom: 150px;
+}
+.m-bot-l {
+  margin-bottom: 300px;
+}
+.clients-box .row>div {
+  margin: 20px 0;
+}
+.contacts-box>div:last-child {
+  padding-top: 0;
 }

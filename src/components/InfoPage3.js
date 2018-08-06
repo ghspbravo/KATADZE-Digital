@@ -7,7 +7,7 @@ import bgImage from '../resourses/infoPage3.png'
 export default class infoPage3 extends Component {
 
     componentDidMount() {
-        let drawSection = new TimelineMax()
+        let drawSection = new TimelineMax({onComplete: this.props.drawEnd})
 
         drawSection.delay(1)
             .from('.page-container h1', 0.5, { rotationX: '90' })

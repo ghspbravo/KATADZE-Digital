@@ -17,17 +17,20 @@ export default class PortfolioPage extends Component {
             image: developImage,
             currentCategoryIndex: 0,
             categories: ['Разработка', 'Дизайн', 'Спецпроекты'],
+            changing: false
         }
     }
 
     handlePortfolioChange = currentIndex => {
+        if (this.state.changing) return
         switch (currentIndex) {
             case 0:
                 this.setState({
                     title: 'Разработка',
                     features: ['Веб-сайты', 'Приложения', 'Боты', 'Плагины'],
                     image: developImage,
-                    currentCategoryIndex: currentIndex
+                    currentCategoryIndex: currentIndex,
+                    changing: true
                 })
                 break;
             case 1:
@@ -35,7 +38,8 @@ export default class PortfolioPage extends Component {
                     title: 'Дизайн',
                     features: ['Логотипы', 'Интерфейсы', 'Бизнес-презентации'],
                     image: designImage,
-                    currentCategoryIndex: currentIndex
+                    currentCategoryIndex: currentIndex,
+                    changing: true
                 })
                 break;
             case 2:
@@ -43,20 +47,21 @@ export default class PortfolioPage extends Component {
                     title: 'Спецпроекты',
                     features: ['Брендинг', 'Поддержка и развитие сайтов', 'Работа с блогерами'],
                     image: specialProjectsImage,
-                    currentCategoryIndex: currentIndex
+                    currentCategoryIndex: currentIndex,
+                    changing: true
                 })
                 break;
 
             default:
-                break;
+                return
         }
         
-        let updateSection = new TimelineMax()
+        let updateSection = new TimelineMax({onComplete: () => this.setState({changing: false})})
 
         updateSection.add('start')
             .from('.page-container p.lead', 0.5, { rotationX: '90' })
             .staggerFrom('.page-container li', 0.5, { opacity: '0', cycle: { rotationX: [-90, 90], transformOrigin: ['50% top', '50% bottom'] } })
-            .from('.categoryLetter', 0.5, { fontSize: '0', ease: Back.easeOut.config(3), oncomplete: () => this.setState({drawComplete: true}) }, 'start+=0.2')
+            .from('.categoryLetter', 0.5, { fontSize: '0', ease: Back.easeOut.config(3) }, 'start+=0.2')        
     }
 
     handleNextPortfolioClick = () => {
@@ -67,7 +72,7 @@ export default class PortfolioPage extends Component {
     }
 
     componentDidMount() {
-        let drawSection = new TimelineMax()
+        let drawSection = new TimelineMax({onComplete: this.props.drawEnd})
 
         drawSection.delay(1)
             .add('start')

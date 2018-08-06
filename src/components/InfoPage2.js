@@ -6,7 +6,7 @@ import bgImage from '../resourses/infoPage2.png'
 export default class infoPage2 extends Component {
 
     componentDidMount() {
-        let drawSection = new TimelineMax()
+        let drawSection = new TimelineMax({onComplete: this.props.drawEnd})
 
         drawSection.delay(1)
         .from('.page-container p.lead', 0.3, { opacity: '0', x: '-200px' })

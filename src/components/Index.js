@@ -23,6 +23,8 @@ export default class Index extends Component {
         };
     };
 
+    handleDrawEnd = () => this.setState({ scrolling: false })
+
     handleNextSection = () => {
         if (this.state.scrolling || this.state.currentSection === 6) return
         this.setState({ scrolling: true })
@@ -31,10 +33,10 @@ export default class Index extends Component {
         nextSectionTimeLine.set('#delimiter1', { display: 'block', bottom: '-100%' })
             .set('#delimiter2', { display: 'block', bottom: '-100%' })
             .to('#delimiter1', 0.5, { bottom: '0%', ease: Expo.easeOut })
-            .to('#delimiter2', 0.5, { bottom: '0%', oncomplete: this.nextSection }, '-=0.3')
+            .to('#delimiter2', 0.5, { bottom: '0%', onComplete: this.nextSection }, '-=0.3')
             .set('#delimiter1', { display: 'none' })
             .to('#delimiter2', 0.5, { bottom: '100%' })
-            .set('#delimiter2', { display: 'none', oncomplete: () => this.setState({ scrolling: false }) })
+            .set('#delimiter2', { display: 'none' })
     }
 
     handlePreviousSection = () => {
@@ -45,21 +47,21 @@ export default class Index extends Component {
         previousSectionTimeLine.set('#delimiter1', { display: 'block', bottom: '100%' })
             .set('#delimiter2', { display: 'block', bottom: '100%' })
             .to('#delimiter1', 0.5, { bottom: '0%', ease: Expo.easeOut })
-            .to('#delimiter2', 0.5, { bottom: '0%', oncomplete: this.previousSection }, '-=0.3')
+            .to('#delimiter2', 0.5, { bottom: '0%', onComplete: this.previousSection }, '-=0.3')
             .set('#delimiter1', { display: 'none' })
             .to('#delimiter2', 0.5, { bottom: '-100%' })
-            .set('#delimiter2', { display: 'none', oncomplete: () => this.setState({ scrolling: false }) })
+            .set('#delimiter2', { display: 'none' })
     }
 
     renderCurrentComponent = index => {
         switch (index) {
-            case 0: return <LogoPage />
-            case 1: return <InfoPage1 />
-            case 2: return <InfoPage2 />
-            case 3: return <InfoPage3 />
-            case 4: return <PortfolioPage />
-            case 5: return <ClientsPage />
-            case 6: return <InfoPage4 />
+            case 0: return <LogoPage drawEnd={this.handleDrawEnd}/>
+            case 1: return <InfoPage1 drawEnd={this.handleDrawEnd}/>
+            case 2: return <InfoPage2 drawEnd={this.handleDrawEnd}/>
+            case 3: return <InfoPage3 drawEnd={this.handleDrawEnd}/>
+            case 4: return <PortfolioPage drawEnd={this.handleDrawEnd}/>
+            case 5: return <ClientsPage drawEnd={this.handleDrawEnd}/>
+            case 6: return <InfoPage4 drawEnd={this.handleDrawEnd}/>
 
             default:
                 break;
@@ -78,17 +80,20 @@ export default class Index extends Component {
     componentDidMount() {
 
         document.getElementsByClassName('one-page-scroll')[0].onwheel = e => {
+            if (this.state.scrolling) return
             e.wheelDeltaY < 0
                 ? this.handleNextSection()
                 : this.handlePreviousSection()
         }
         document.getElementsByClassName('one-page-scroll')[0].ontouchstart = e => {
+            if (this.state.scrolling) return
             this.state.touching
                 ? true
                 : this.setState({ touchingY: e.changedTouches[0].clientY, touching: true })
 
         }
         document.getElementsByClassName('one-page-scroll')[0].ontouchend = e => {
+            if (!this.state.touching) return
             this.setState({ touching: false })
             if (e.changedTouches[0].clientY === this.state.touchingY) return
             e.changedTouches[0].clientY > this.state.touchingY

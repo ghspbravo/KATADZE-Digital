@@ -5,6 +5,7 @@ import '../anim.css'
 
 export default class LogoPage extends Component {
   componentDidMount() {
+    this.props.drawEnd()
     logoAnimation()
   }
 

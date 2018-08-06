@@ -13,8 +13,10 @@ acsentColor = #F7FF80
 
 body
     font-family: 'Raleway', sans-serif
+    overflow-x: hidden
 .row 
-    margin: 0 !important
+    margin-left: 0
+    margin-right: 0
 h1  
     font-size 6rem
     line-height 1
@@ -23,11 +25,21 @@ h1
     text-transform uppercase
 h2 
     font-size 4.5rem
+h3 
+    font-size 3rem
+    text-transform uppercase
+    margin-bottom 30px
+    font-weight 400
+    line-height 56px
+    color: mainColor
 p 
     color: mainColor
     font-size 1.5rem
     line-height 28px
     font-weight 400
+    margin: 10px 0
+    &.small
+        font-size 1rem
     &.lead
         font-size 2.250rem
         line-height 42px
@@ -38,6 +50,7 @@ p
         font-size 2.375rem
         font-weight bold
         line-height 56px
+
 a, li
     color: mainColor
     font-size 1.5rem
@@ -47,6 +60,12 @@ a, li
 a:hover
     color: acsentColor !important
     text-shadow: mainColor -2px -2px
+
+img
+    width 100%
+
+span  
+    color: mainColor
 
 #delimiter1,
 #delimiter2  
@@ -68,10 +87,6 @@ a:hover
     color: mainColor
     height 100vh
     background-repeat no-repeat
-
-// section indicators
-.one-page-scroll>div>ul
-    display: none
 
 .one-page-scroll
     position relative
@@ -107,6 +122,7 @@ button.mobileBurger
     outline: none;
     cursor: pointer;
     background-color: transparent
+    right: 4rem
     & svg 
         position fixed
 button.burger
@@ -204,6 +220,8 @@ button.burger
 
 .mainbg 
     background-color: mainColor
+    & p, h3, h1, h2   
+        color: white
 
 .elect
     font-family: 'BebasNeueRegular', sans-serif
@@ -212,18 +230,20 @@ button.burger
     user-select: none
 
 // boxes
-.contacts-box, .clients-box
+.contacts-box
+    position: relative
+    background: linear-gradient(90deg, white 50%, mainColor 50%)
+
+.contacts-box>div
+    padding-top: 100px
+    padding-bottom: 100px
+
+.clients-box
     background-color: mainColor
     padding-top: 150px
     padding-bottom 150px
     & p
         color: white
-
-.clients-box div[class^="col-"]
-    display flex
-    justify-content: center
-    margin-top: 50px
-    margin-bottom 50px
 
 // FORM
 form input {
@@ -280,6 +300,8 @@ form button {
             color: mainColor
 
 @media (max-width 768px)
+    h3  
+        font-size 2rem
     .control-button
         font-size 6rem
     .portfolioLink
@@ -289,8 +311,17 @@ form button {
         font-size 300px
         left 55%
         top: 25%
+    .contacts-box>div
+        padding-top: 50px
+        padding-bottom: 50px
+    .clients-box
+        padding-top 0
+        padding-bottom 0
 
 @media (max-width 576px)
+    h3  
+        font-size 1.5rem
+        line-height 1.5
     h1  
         font-size 2.5rem
     p  
@@ -306,6 +337,40 @@ form button {
         text-shadow: mainColor -10px -15px
     .control-button
         font-size 4rem
-    .clients-box
-        padding-top 0
-        padding-bottom 0
+    .contacts-box
+        background: mainColor
+        & h3, p
+            color: white !important
+    .order-fix
+        order 2
+    .contacts-box>div
+        padding-top: 30px
+        padding-bottom: 30px
+
+.justify-center
+    display flex
+    flex-wrap: wrap
+    justify-content: center
+
+.text-center
+    text-align center
+
+.text-right
+    text-align right
+
+.align-center
+    display flex
+    flex-wrap: wrap
+    align-items: center
+
+.m-bot-m
+    margin-bottom: 150px
+
+.m-bot-l
+    margin-bottom: 300px
+
+.clients-box .row>div
+    margin: 20px 0
+
+.contacts-box>div:last-child
+    padding-top: 0
