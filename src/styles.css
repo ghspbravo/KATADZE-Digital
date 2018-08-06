@@ -27,10 +27,10 @@ h3 {
   margin-bottom: 30px;
   font-weight: 400;
   line-height: 56px;
-  color: #67cae8;
+  color: #000;
 }
 p {
-  color: #67cae8;
+  color: #000;
   font-size: 1.5rem;
   line-height: 28px;
   font-weight: 400;
@@ -53,21 +53,21 @@ p span {
 }
 a,
 li {
-  color: #67cae8;
+  color: #000;
   font-size: 1.5rem;
   line-height: 28px;
   font-weight: 300;
   text-decoration: none;
 }
 a:hover {
-  color: #f7ff80 !important;
-  text-shadow: #67cae8 -2px -2px;
+  color: #edf2f2 !important;
+  text-shadow: #000 -2px -2px;
 }
 img {
   width: 100%;
 }
 span {
-  color: #67cae8;
+  color: #000;
 }
 #delimiter1,
 #delimiter2 {
@@ -78,14 +78,14 @@ span {
   display: none;
 }
 #delimiter1 {
-  background-color: #67cae8;
+  background-color: #fff;
 }
 #delimiter2 {
-  background-color: #f7ff80;
+  background-color: #edf2f2;
 }
 .onescroll-section>div {
   align-items: center;
-  color: #67cae8;
+  color: #000;
   height: 100vh;
   background-repeat: no-repeat;
 }
@@ -94,7 +94,7 @@ span {
 }
 .studio-name {
   font-family: 'Open Sans', sans-serif;
-  color: #fff;
+  color: #000;
   position: absolute;
   left: 50%;
   transform: translate(-50%);
@@ -148,7 +148,6 @@ button.burger {
 }
 .navbar a {
   color: #000;
-  text-shadow: #67cae8 -2px -2px;
   z-index: 10;
 }
 .mobileNavContainer {
@@ -158,7 +157,7 @@ button.burger {
   left: 0;
   height: 0;
   width: 100%;
-  background-color: #f7ff80;
+  background-color: #edf2f2;
   z-index: 5;
 }
 .mobileNavContainer a {
@@ -195,7 +194,7 @@ button.burger {
 }
 .control-button:nth-child(n),
 .control-label:nth-child(n) {
-  color: #67cae8;
+  color: #000;
 }
 .control-button:nth-child(2),
 .control-label:nth-child(2) {
@@ -209,7 +208,7 @@ button.burger {
   text-transform: uppercase;
   padding-bottom: 10px;
   font-weight: 100;
-  border-bottom: 1px solid #67cae8;
+  border-bottom: 1px solid #000;
 }
 .bot-hint {
   position: absolute;
@@ -218,31 +217,31 @@ button.burger {
   transform: translate(-50%);
   text-align: center;
 }
-.mainbg {
-  background-color: #67cae8;
+.acsentbg {
+  background-color: #edf2f2;
 }
-.mainbg p,
-.mainbg h3,
-.mainbg h1,
-.mainbg h2 {
+.acsentbg p,
+.acsentbg h3,
+.acsentbg h1,
+.acsentbg h2 {
   color: #fff;
 }
 .elect {
   font-family: 'BebasNeueRegular', sans-serif;
   color: #000;
-  text-shadow: #67cae8 -0.3rem -0.4rem;
+  text-shadow: #edf2f2 -0.3rem -0.4rem;
   user-select: none;
 }
 .contacts-box {
   position: relative;
-  background: linear-gradient(90deg, #fff 50%, #67cae8 50%);
+  background: linear-gradient(90deg, #fff 50%, #edf2f2 50%);
 }
 .contacts-box>div {
   padding-top: 100px;
   padding-bottom: 100px;
 }
 .clients-box {
-  background-color: #67cae8;
+  background-color: #000;
   padding-top: 150px;
   padding-bottom: 150px;
 }
@@ -273,7 +272,7 @@ form button {
   font-weight: normal;
   font-size: 18px;
   line-height: 25px;
-  color: #67cae8;
+  color: #000;
   background-color: transparent;
   border: none;
   border-bottom: 2px solid #fb0;
@@ -300,11 +299,11 @@ form button {
   }
   .control-button:nth-child(n),
   .control-label:nth-child(n) {
-    color: #67cae8;
+    color: #000;
   }
   .control-button:nth-child(2),
   .control-label:nth-child(2) {
-    color: #67cae8;
+    color: #000;
   }
 }
 @media (max-width: 768px) {
@@ -351,13 +350,13 @@ form button {
   .categoryLetter {
     font-size: 200px;
     top: 20%;
-    text-shadow: #67cae8 -10px -15px;
+    text-shadow: #000 -10px -15px;
   }
   .control-button {
     font-size: 4rem;
   }
   .contacts-box {
-    background: #67cae8;
+    background: #000;
   }
   .contacts-box h3,
   .contacts-box p {

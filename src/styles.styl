@@ -1,5 +1,6 @@
-mainColor = #67CAE8
-acsentColor = #F7FF80
+mainColor = black
+acsentColor = #edf2f2
+
 
 // FONTS
 
@@ -76,7 +77,7 @@ span
     display none
 
 #delimiter1
-    background-color mainColor
+    background-color white
 
 #delimiter2 
     background-color acsentColor
@@ -95,7 +96,7 @@ span
 
 .studio-name
     font-family: 'Open Sans', sans-serif;
-    color: white;
+    color: black;
     position: absolute;
     left: 50%;
     transform: translate(-50%);
@@ -146,7 +147,6 @@ button.burger
     right: 4em;
 .navbar a
     color: black
-    text-shadow: mainColor -2px -2px;
     z-index: 10
 
 .mobileNavContainer
@@ -218,21 +218,21 @@ button.burger
     transform: translate(-50%)
     text-align: center
 
-.mainbg 
-    background-color: mainColor
+.acsentbg 
+    background-color: acsentColor
     & p, h3, h1, h2   
         color: white
 
 .elect
     font-family: 'BebasNeueRegular', sans-serif
     color: black
-    text-shadow: mainColor -0.3rem -0.4rem
+    text-shadow: acsentColor -0.3rem -0.4rem
     user-select: none
 
 // boxes
 .contacts-box
     position: relative
-    background: linear-gradient(90deg, white 50%, mainColor 50%)
+    background: linear-gradient(90deg, white 50%, acsentColor 50%)
 
 .contacts-box>div
     padding-top: 100px

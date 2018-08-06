@@ -30,12 +30,10 @@ export default class Index extends Component {
         this.setState({ scrolling: true })
         let nextSectionTimeLine = new TimelineMax()
 
-        nextSectionTimeLine.set('#delimiter1', { display: 'block', bottom: '-100%' })
+        nextSectionTimeLine
             .set('#delimiter2', { display: 'block', bottom: '-100%' })
-            .to('#delimiter1', 0.5, { bottom: '0%', ease: Expo.easeOut })
-            .to('#delimiter2', 0.5, { bottom: '0%', onComplete: this.nextSection }, '-=0.3')
-            .set('#delimiter1', { display: 'none' })
-            .to('#delimiter2', 0.5, { bottom: '100%' })
+            .to('#delimiter2', 0.5, { bottom: '0%', ease: Expo.easeOut, onComplete: this.nextSection })
+            .to('#delimiter2', 0.2, { bottom: '100%' })
             .set('#delimiter2', { display: 'none' })
     }
 
@@ -44,12 +42,10 @@ export default class Index extends Component {
         this.setState({ scrolling: true })
         let previousSectionTimeLine = new TimelineMax()
 
-        previousSectionTimeLine.set('#delimiter1', { display: 'block', bottom: '100%' })
+        previousSectionTimeLine
             .set('#delimiter2', { display: 'block', bottom: '100%' })
-            .to('#delimiter1', 0.5, { bottom: '0%', ease: Expo.easeOut })
-            .to('#delimiter2', 0.5, { bottom: '0%', onComplete: this.previousSection }, '-=0.3')
-            .set('#delimiter1', { display: 'none' })
-            .to('#delimiter2', 0.5, { bottom: '-100%' })
+            .to('#delimiter2', 0.5, { bottom: '0%', ease: Expo.easeOut, onComplete: this.previousSection })
+            .to('#delimiter2', 0.2, { bottom: '-100%' })
             .set('#delimiter2', { display: 'none' })
     }
 

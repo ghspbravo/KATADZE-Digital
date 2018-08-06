@@ -11,7 +11,7 @@ export default class LogoPage extends Component {
 
   render() {
     return (
-      <div className="mainbg row">
+      <div className="acsentbg row">
         <div className="studio-name">Katadze Digital agency</div>
         <div className="hero hero--home">
           <ul className="messages" id="messages">
@@ -35,7 +35,7 @@ export default class LogoPage extends Component {
             </li>
           </ul>
         </div>
-        <div className="bot-hint" style={{ fontSize: '3.750em', color: '#F7FF80', userSelect: 'none' }}>↓</div>
+        <div className="bot-hint" style={{ fontSize: '3.750em', color: 'black', userSelect: 'none' }}>↓</div>
       </div>
     )
   }

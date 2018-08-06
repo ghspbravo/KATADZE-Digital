@@ -114,9 +114,9 @@ function isCanvasSupported() {
 
     Distortion.prototype.initialDraw = function () {
         var _ = this;
-        _.context.fillStyle = '#67CAE8';
+        _.context.fillStyle = '#edf2f2';
         _.context.fillRect(0, 0, _.canvas.width, _.canvas.height);
-        _.context.fillStyle = '#F7FF80';
+        _.context.fillStyle = 'black';
         _.context.font = '800 ' + _.fontSize + 'px BebasNeueRegular';
         _.context.textBaseline = 'middle';
         _.context.textAlign = 'center';
