@@ -1,10 +1,10 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans|Raleway");
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Montserrat");
 @font-face {
   font-family: BebasNeueRegular;
   src: url("./fonts/BebasNeueRegular.otf");
 }
 body {
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   overflow-x: hidden;
 }
 .row {
@@ -69,19 +69,19 @@ img {
 span {
   color: #000;
 }
-#delimiter1,
-#delimiter2 {
+#delimiter2,
+#delimiter1 {
   z-index: 9;
   position: absolute;
   height: 100%;
   width: 100%;
   display: none;
 }
-#delimiter1 {
-  background-color: #fff;
-}
 #delimiter2 {
   background-color: #edf2f2;
+}
+#delimiter1 {
+  background-color: #fff;
 }
 .onescroll-section>div {
   align-items: center;
@@ -91,6 +91,9 @@ span {
 }
 .one-page-scroll {
   position: relative;
+}
+.messages li {
+  display: none;
 }
 .studio-name {
   font-family: 'Open Sans', sans-serif;
@@ -198,7 +201,7 @@ button.burger {
 }
 .control-button:nth-child(2),
 .control-label:nth-child(2) {
-  color: #fff;
+  color: #000;
 }
 .portfolioLink {
   position: absolute;
@@ -224,13 +227,38 @@ button.burger {
 .acsentbg h3,
 .acsentbg h1,
 .acsentbg h2 {
-  color: #fff;
+  color: #000;
 }
 .elect {
   font-family: 'BebasNeueRegular', sans-serif;
   color: #000;
   text-shadow: #edf2f2 -0.3rem -0.4rem;
   user-select: none;
+}
+.clientsLogo>div:nth-child(1) {
+  border-right: 1px solid;
+  border-bottom: 1px solid;
+}
+.clientsLogo>div:nth-child(2) {
+  border-bottom: 1px solid;
+}
+.clientsLogo>div:nth-child(3) {
+  border-left: 1px solid;
+  border-bottom: 1px solid;
+}
+.clientsLogo>div:nth-child(4) {
+  border-top: 1px solid;
+  border-right: 1px solid;
+}
+.clientsLogo>div:nth-child(5) {
+  border-top: 1px solid;
+}
+.clientsLogo>div:nth-child(6) {
+  border-top: 1px solid;
+  border-left: 1px solid;
+}
+.clientsLogo>div {
+  padding: 50px;
 }
 .contacts-box {
   position: relative;
@@ -281,7 +309,18 @@ form button {
   margin-top: 50px;
   cursor: pointer;
 }
+@media (max-width: 1600px) {
+  #ipad1 {
+    transform: scale(6) rotate(55deg) !important;
+  }
+  #innerText {
+    font-size: 0.2rem !important;
+  }
+}
 @media (max-width: 1200px) {
+  #ipad1 {
+    transform: scale(5) rotate(55deg) !important;
+  }
   h1 {
     font-size: 5rem;
   }
@@ -294,8 +333,11 @@ form button {
   }
 }
 @media (max-width: 992px) {
-  .categoryLetter {
-    left: 80%;
+  .categoryImg {
+    position: fixed;
+    left: 25%;
+    top: 5%;
+    transform: scale(0.5);
   }
   .control-button:nth-child(n),
   .control-label:nth-child(n) {
@@ -317,10 +359,8 @@ form button {
     bottom: 10rem;
     left: 2rem;
   }
-  .categoryLetter {
-    font-size: 300px;
-    left: 55%;
-    top: 25%;
+  .categoryImg {
+    display: none;
   }
   .contacts-box>div {
     padding-top: 50px;
@@ -356,11 +396,7 @@ form button {
     font-size: 4rem;
   }
   .contacts-box {
-    background: #000;
-  }
-  .contacts-box h3,
-  .contacts-box p {
-    color: #fff !important;
+    background: #fff;
   }
   .order-fix {
     order: 2;

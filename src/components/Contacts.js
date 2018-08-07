@@ -35,11 +35,11 @@ export default class Contacts extends Component {
                 <div className="row justify-center contacts-box">
                     <div className="row d-sm-flex d-none col-xl-10 col-lg-12 m-bot-m">
                         <p className="col-sm-6">KATADZE DIGITAL</p>
-                        <p className="col-sm-6 text-right" style={{ color: 'white' }}>КОНТАКТЫ</p>
+                        <p className="col-sm-6 text-right" style={{ color: 'black' }}>КОНТАКТЫ</p>
                     </div>
                     <div className="row col-12">
                         <h3 className="text-center col-12 col-sm-6">Давайте работать <br />вместе</h3>
-                        <h3 style={{ color: 'white' }} className="text-center col-12 col-sm-6">Ленина 66 <br />Екатеринбург</h3>
+                        <h3 style={{ color: 'black' }} className="text-center col-12 col-sm-6">Ленина 66 <br />Екатеринбург</h3>
                     </div>
                     <div className="col-12 row">
                         <div className="col-12 col-sm-6 col-lg-5 offset-lg-1 order-fix" style={{ display: 'flex',  flexWrap: 'wrap', alignItems: 'flex-end' }}>

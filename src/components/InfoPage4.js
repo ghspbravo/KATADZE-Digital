@@ -24,12 +24,16 @@ export default class infoPage4 extends Component {
                         И независимо от ваших потребностей, мы с нетерпением ждем от вас обратной связи.
             </p>
                 </div>
-                <div className="d-none d-lg-block offset-lg-1 col-lg-5 parallaxbg" style={{
-                    height: '500px',
+                <div className="d-none d-lg-block parallaxbg" style={{
+                    position: 'fixed',
+                    top: '0',
+                    right: '-40%',
+                    height: '100%',
+                    width: '100%',
                     backgroundImage: `url(${bgImage})`,
                     backgroundSize: 'contain',
                     backgroundRepeat: 'no-repeat',
-                    backgroundPosition: 'right'
+                    backgroundPosition: 'left'
                 }}></div>
                 <Link to="/Contacts">
                     <div className="bot-hint elect col-12"><h1>Связаться с нами</h1></div>

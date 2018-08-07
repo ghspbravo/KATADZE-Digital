@@ -23,8 +23,12 @@ export default class infoPage3 extends Component {
                         и тестируем десятки гипотез перед тем, как предложить клиенту первую концепцию.
                 Идея становится интерактивным прототипом, а затем готовым продуктом.</p>
                 </div>
-                <div className="d-none d-lg-block col-lg-5 parallaxbg" style={{
-                    height: '500px',
+                <div className="d-none d-lg-block parallaxbg" style={{
+                    position: 'fixed',
+                    top: '0',
+                    right: '0',
+                    height: '100%',
+                    width: '100%',
                     backgroundImage: `url(${bgImage})`,
                     backgroundSize: 'contain',
                     backgroundRepeat: 'no-repeat',

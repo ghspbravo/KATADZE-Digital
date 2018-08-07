@@ -11,7 +11,7 @@ export default class LogoPage extends Component {
 
   render() {
     return (
-      <div className="acsentbg row">
+      <div className="row">
         <div className="studio-name">Katadze Digital agency</div>
         <div className="hero hero--home">
           <ul className="messages" id="messages">

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import TweenMax from "gsap/TweenMax";
 import TimelineMax from 'gsap/TimelineMax'
-import { Expo } from 'gsap/EasePack'
+import { Expo, Circ } from 'gsap/EasePack'
 
 import LogoPage from './LogoPage'
 import InfoPage1 from './InfoPage1'
@@ -30,10 +30,12 @@ export default class Index extends Component {
         this.setState({ scrolling: true })
         let nextSectionTimeLine = new TimelineMax()
 
-        nextSectionTimeLine
+        nextSectionTimeLine.set('#delimiter1', { display: 'block', bottom: '-100%' })
+            .to('#delimiter1', 0.5, { bottom: '0%', ease: Expo.easeOut })
             .set('#delimiter2', { display: 'block', bottom: '-100%' })
-            .to('#delimiter2', 0.5, { bottom: '0%', ease: Expo.easeOut, onComplete: this.nextSection })
-            .to('#delimiter2', 0.2, { bottom: '100%' })
+            .to('#delimiter2', 0.5, { bottom: '0%', ease: Circ.easeInOut, onComplete: this.nextSection })
+            .set('#delimiter1', { display: 'none' })
+            .to('#delimiter2', 1, { bottom: '100%', ease: Circ.easeInOut })
             .set('#delimiter2', { display: 'none' })
     }
 
@@ -42,10 +44,12 @@ export default class Index extends Component {
         this.setState({ scrolling: true })
         let previousSectionTimeLine = new TimelineMax()
 
-        previousSectionTimeLine
+        previousSectionTimeLine.set('#delimiter1', { display: 'block', bottom: '100%' })
+            .to('#delimiter1', 0.5, { bottom: '0%', ease: Expo.easeOut })
             .set('#delimiter2', { display: 'block', bottom: '100%' })
-            .to('#delimiter2', 0.5, { bottom: '0%', ease: Expo.easeOut, onComplete: this.previousSection })
-            .to('#delimiter2', 0.2, { bottom: '-100%' })
+            .to('#delimiter2', 0.5, { bottom: '0%', ease: Circ.easeInOut, onComplete: this.previousSection })
+            .set('#delimiter1', { display: 'none' })
+            .to('#delimiter2', 1, { bottom: '-100%', ease: Circ.easeInOut })
             .set('#delimiter2', { display: 'none' })
     }
 

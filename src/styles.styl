@@ -4,16 +4,17 @@ acsentColor = #edf2f2
 
 // FONTS
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Montserrat');
 @font-face {
     font-family: BebasNeueRegular;
     src: url(./fonts/BebasNeueRegular.otf);
 }
+// font-family: 'Montserrat', sans-serif;
 // font-family: 'Raleway', sans-serif;
 // font-family: 'Open Sans', sans-serif;
 
 body
-    font-family: 'Raleway', sans-serif
+    font-family: 'Montserrat', sans-serif
     overflow-x: hidden
 .row 
     margin-left: 0
@@ -68,19 +69,21 @@ img
 span  
     color: mainColor
 
-#delimiter1,
-#delimiter2  
+#delimiter2,
+#delimiter1
     z-index 9
     position absolute 
     height 100%
     width 100%
     display none
 
-#delimiter1
-    background-color white
-
 #delimiter2 
     background-color acsentColor
+
+#delimiter1
+    // background-color #F7FF80
+    background-color white
+
 
 // SECTIONS
 .onescroll-section>div
@@ -93,6 +96,9 @@ span
     position relative
 
 // LOGO PAGE
+
+.messages li
+    display none
 
 .studio-name
     font-family: 'Open Sans', sans-serif;
@@ -197,7 +203,7 @@ button.burger
     &:nth-child(n)
         color: mainColor
     &:nth-child(2)
-        color: white
+        color: mainColor
     
 .portfolioLink
     position: absolute
@@ -221,13 +227,46 @@ button.burger
 .acsentbg 
     background-color: acsentColor
     & p, h3, h1, h2   
-        color: white
+        color: black
 
 .elect
     font-family: 'BebasNeueRegular', sans-serif
     color: black
     text-shadow: acsentColor -0.3rem -0.4rem
     user-select: none
+
+// CLIENTS
+.clientsLogo>div:nth-child(1) {
+    border-right: 1px solid;
+    border-bottom: 1px solid;
+}
+
+.clientsLogo>div:nth-child(2) {
+    border-bottom: 1px solid;
+}
+
+.clientsLogo>div:nth-child(3) {
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+}
+
+.clientsLogo>div:nth-child(4) {
+    border-top: 1px solid;
+    border-right: 1px solid;
+}
+
+.clientsLogo>div:nth-child(5) {
+    border-top: 1px solid;
+}
+
+.clientsLogo>div:nth-child(6) {
+    border-top: 1px solid;
+    border-left: 1px solid;
+}
+
+.clientsLogo>div {
+    padding: 50px;
+}
 
 // boxes
 .contacts-box
@@ -280,7 +319,15 @@ form button {
   cursor: pointer;
 }
 
+@media (max-width 1600px)
+    #ipad1
+        transform: scale(6) rotate(55deg) !important
+    #innerText
+        font-size 0.2rem !important
+
 @media (max-width 1200px)
+    #ipad1
+        transform: scale(5) rotate(55deg) !important
     h1 
         font-size 5rem
     p  
@@ -290,8 +337,11 @@ form button {
             line-height 35px
 
 @media (max-width 992px)
-    .categoryLetter
-        left 80%
+    .categoryImg
+        position: fixed;
+        left: 25%;
+        top: 5%;
+        transform: scale(0.5);
     .control-button,
     .control-label
         &:nth-child(n)
@@ -307,10 +357,8 @@ form button {
     .portfolioLink
         bottom: 10rem
         left: 2rem
-    .categoryLetter
-        font-size 300px
-        left 55%
-        top: 25%
+    .categoryImg
+        display none
     .contacts-box>div
         padding-top: 50px
         padding-bottom: 50px
@@ -338,9 +386,9 @@ form button {
     .control-button
         font-size 4rem
     .contacts-box
-        background: mainColor
-        & h3, p
-            color: white !important
+        background: white
+        // & h3, p
+        //     color: white !important
     .order-fix
         order 2
     .contacts-box>div
