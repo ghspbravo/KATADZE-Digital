@@ -145,7 +145,7 @@ class App extends Component {
 					<div className="navbar d-none d-md-block">
 						<div className="navLinks">
 							<NavLink id="main-nav" className="col-lg-4" to="/">Главная</NavLink>
-							<NavLink id="portfolio-nav" className="col-lg-4" to="/Portfolio">Порфтолио</NavLink>
+							<NavLink id="portfolio-nav" className="col-lg-4" to="/Portfolio">Портфолио</NavLink>
 							<NavLink id="contacts-nav" className="col-lg-4" to="/Contacts">Контакты</NavLink>
 						</div>
 						<button onClick={this.showMenu} className="burger">
@@ -178,7 +178,7 @@ class App extends Component {
 									<NavLink to="/">Главная</NavLink>
 								</div>
 								<div className="col-12">
-									<NavLink to="/Portfolio">Порфтолио</NavLink>
+									<NavLink to="/Portfolio">Портфолио</NavLink>
 								</div>
 								<div className="col-12">
 									<NavLink to="/Contacts">Контакты</NavLink>

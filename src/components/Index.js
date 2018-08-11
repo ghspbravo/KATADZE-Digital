@@ -31,11 +31,11 @@ export default class Index extends Component {
         let nextSectionTimeLine = new TimelineMax()
 
         nextSectionTimeLine.set('#delimiter1', { display: 'block', bottom: '-100%' })
-            .to('#delimiter1', 0.5, { bottom: '0%', ease: Expo.easeOut })
+            .to('#delimiter1', 0.5, { bottom: '0%', ease: Expo.easeOut, onComplete: this.nextSection })
             .set('#delimiter2', { display: 'block', bottom: '-100%' })
-            .to('#delimiter2', 0.5, { bottom: '0%', ease: Circ.easeInOut, onComplete: this.nextSection })
+            .to('#delimiter2', 0.3, { bottom: '0%', ease: Circ.easeInOut})
             .set('#delimiter1', { display: 'none' })
-            .to('#delimiter2', 1, { bottom: '100%', ease: Circ.easeInOut })
+            .to('#delimiter2', 0.5, { bottom: '100%', ease: Circ.easeInOut })
             .set('#delimiter2', { display: 'none' })
     }
 
@@ -45,11 +45,11 @@ export default class Index extends Component {
         let previousSectionTimeLine = new TimelineMax()
 
         previousSectionTimeLine.set('#delimiter1', { display: 'block', bottom: '100%' })
-            .to('#delimiter1', 0.5, { bottom: '0%', ease: Expo.easeOut })
+            .to('#delimiter1', 0.5, { bottom: '0%', ease: Expo.easeOut, onComplete: this.previousSection })
             .set('#delimiter2', { display: 'block', bottom: '100%' })
-            .to('#delimiter2', 0.5, { bottom: '0%', ease: Circ.easeInOut, onComplete: this.previousSection })
+            .to('#delimiter2', 0.3, { bottom: '0%', ease: Circ.easeInOut })
             .set('#delimiter1', { display: 'none' })
-            .to('#delimiter2', 1, { bottom: '-100%', ease: Circ.easeInOut })
+            .to('#delimiter2', 0.5, { bottom: '-100%', ease: Circ.easeInOut })
             .set('#delimiter2', { display: 'none' })
     }
 
